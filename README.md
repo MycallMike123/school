@@ -23,7 +23,9 @@ A full-stack Database Management System for Secondary Schools, built with Django
 ### Clone the Repo
 ```bash
 git clone <your-repo-url>
+
 cd school-dbms
+
 Set up a virtual environment
 bash
 Copy
@@ -64,52 +66,4 @@ SMS/email alerts to parents
 
 Full API (Node.js microservice)
 
-B
-B
-B
-B
-B
-B
-B
-B
-B
-B
-B
-B
-A
-A
-A
-B
-B
-B
-B
-B
-B
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
 Advanced analytics dashboard
