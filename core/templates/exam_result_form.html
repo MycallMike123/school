@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<head>
+    <title>Register Exam Result</title>
+</head>
+<body>
+    <h2>Register Exam Result</h2>
+
+    {% if messages %}
+      {% for message in messages %}
+        <p>{{ message }}</p>
+      {% endfor %}
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit Result</button>
+    </form>
+</body>
+
+{% endblock content %}

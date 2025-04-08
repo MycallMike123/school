@@ -1,8 +1,9 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from .forms import RegisterUserForm, StudentRegistrationForm
-from .models import UserProfile, Student
+from .forms import RegisterUserForm, StudentRegistrationForm, ExamResultForm
+from .models import UserProfile, Student, Teacher
+from django.contrib import messages
 
 
 # Custom login for all users
@@ -28,7 +29,7 @@ def user_login(request):
                 elif role == 'PARENT':
                     return redirect('parent_dashboard')
 
-            return redirect('dashboard')  # fallback
+            return redirect('home')  # fallback
         else:
             return render(request, 'login.html', {'error': 'Invalid credentials'})
 
@@ -38,7 +39,7 @@ def user_login(request):
 # Only Admins can register new users (e.g., Teachers)
 @login_required
 def register_user(request):
-    if request.user.userprofile.role != 'ADMIN':
+    if not hasattr(request.user, 'userprofile') or request.user.userprofile.role != 'ADMIN':
         return redirect('unauthorized')  # Optional access denied page
 
     if request.method == 'POST':
@@ -54,7 +55,7 @@ def register_user(request):
             profile.role = role
             profile.save()
 
-            return redirect('dashboard')  # Redirect or success message
+            return redirect('admin_dashboard')  # Redirect or success message
     else:
         form = RegisterUserForm()
 
@@ -64,14 +65,14 @@ def register_user(request):
 # Admin registers students (adds to DB only, not Django user model)
 @login_required
 def register_student(request):
-    if request.user.userprofile.role != 'ADMIN':
+    if not hasattr(request.user, 'userprofile') or request.user.userprofile.role != 'ADMIN':
         return redirect('unauthorized')
 
     if request.method == 'POST':
         form = StudentRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('dashboard')
+            return redirect('admin_dashboard')
     else:
         form = StudentRegistrationForm()
 
@@ -79,9 +80,46 @@ def register_student(request):
 
 
 @login_required
-def dashboard(request):
-    return render(request, 'dashboard.html')
+def admin_dashboard(request):
+    return render(request, 'admin_dashboard.html')
 
 
 def unauthorized(request):
     return render(request, 'unauthorized.html', status=403)
+
+
+@login_required
+def register_exam_result(request):
+    if not hasattr(request.user, 'userprofile') or request.user.userprofile.role != 'TEACHER':
+        messages.error(request, "Only teachers can register exam results.")
+        return redirect('home')  # or your dashboard
+
+    if request.method == 'POST':
+        form = ExamResultForm(request.POST)
+        if form.is_valid():
+            exam_result = form.save(commit=False)
+            exam_result.teacher = Teacher.objects.get(user=request.user)
+            exam_result.save()
+            messages.success(request, "Exam result recorded successfully.")
+            return redirect('register_exam_result')
+    else:
+        form = ExamResultForm()
+
+    return render(request, 'exam_result_form.html', {'form': form})
+
+
+@login_required
+def register_subject(request):
+    if not hasattr(request.user, 'userprofile') or request.user.userprofile.role != 'ADMIN':
+        return redirect('unauthorized')
+
+    if request.method == 'POST':
+        form = SubjectForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Subject registered successfully.")
+            return redirect('admin_dashboard')
+    else:
+        form = SubjectForm()
+
+    return render(request, 'register_subject.html', {'form': form})

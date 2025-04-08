@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from core.models import UserProfile, Student
+from core.models import UserProfile, Student, ExamResult, Subject
 
 
 # Generic user Registration form
@@ -27,3 +27,15 @@ class StudentRegistrationForm(forms.ModelForm):
         if marks < 0 or marks > 500:
             raise forms.ValidationError("KCPE Marks must be between 0 and 500.")
         return marks
+
+
+class ExamResultForm(forms.ModelForm):
+    class Meta:
+        model = ExamResult
+        fields = ['student', 'subject', 'score_obtained', 'out_of', 'exam_date']
+
+
+class SubjectForm(forms.ModelForm):
+    class Meta:
+        model = Subject
+        fields = ['subject_name']
