@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Stream Analysis</h1>
+<table border="1">
+  <tr>
+    <th>Stream</th>
+    <th>Number of Students</th>
+  </tr>
+  {% for stream in streams %}
+  <tr>
+    <td>{{ stream.stream }}</td>
+    <td>{{ stream.count }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

@@ -1,9 +1,72 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<body class="bg-light">
-<div class="container mt-5">
-    <h2 class="mb-4">Login</h2>
+<style>
+    body {
+        background: linear-gradient(to right, #cecccc, #ffffff);
+        min-height: 100vh;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .login-container {
+        max-width: 400px;
+        margin: 100px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .login-container h2 {
+        text-align: center;
+        color: #1e3a8a;
+        margin-bottom: 30px;
+    }
+
+    .form-label {
+        color: #111827;
+        font-weight: 600;
+    }
+
+    .form-control {
+        padding: 12px;
+        font-size: 1rem;
+        border-radius: 8px;
+        border: 1px solid #d1d5db;
+    }
+
+    .form-control:focus {
+        border-color: #2563eb;
+        box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-primary {
+        background-color: #1e3a8a;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        width: 100%;
+        border-radius: 8px;
+        margin-top: 15px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #374151;
+    }
+
+    .alert-danger {
+        background-color: #dc2626;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+</style>
+
+<div class="login-container">
+    <h2>Welcome Back</h2>
     {% if error %}
         <div class="alert alert-danger">{{ error }}</div>
     {% endif %}
@@ -20,5 +83,5 @@
         <button type="submit" class="btn btn-primary">Log In</button>
     </form>
 </div>
-</body>
-{% endblock content %}
+
+    {% endblock content %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Students in Stream {{ stream_name }}</h2>
+<table border="1">
+  <tr>
+    <th>Admission No</th>
+    <th>Name</th>
+    <th>KCPE Marks</th>
+    <th>Parent</th>
+  </tr>
+  {% for student in students %}
+  <tr>
+    <td>{{ student.admission_no }}</td>
+    <td>{{ student.full_name }}</td>
+    <td>{{ student.kcpe_marks }}</td>
+    <td>{{ student.parent_name }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

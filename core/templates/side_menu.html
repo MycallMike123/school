@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>    
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Segoe UI', sans-serif;
+        }
+    
+        .sidebar {
+            height: 100vh;
+            background-color: #0a2540;
+            color: white;
+            position: fixed;
+            width: 250px;
+            overflow-y: auto;
+        }
+    
+        .sidebar h4 {
+            padding: 20px;
+            font-size: 22px;
+            border-bottom: 1px solid #1d3557;
+        }
+    
+        .sidebar .nav-link {
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    
+        .sidebar .nav-link:hover {
+            background-color: #1d3557;
+        }
+    
+        .submenu {
+            padding-left: 20px;
+            font-size: 14px;
+            background-color: #112c4a;
+        }
+    
+        .submenu .nav-link {
+            padding: 6px 20px;
+        }
+    
+        .main-content {
+            margin-left: 250px;
+            padding: 30px;
+        }
+    
+        .top-bar {
+            background-color: white;
+            padding: 15px;
+            border-bottom: 1px solid #dee2e6;
+            margin-bottom: 20px;
+        }
+    
+        .form-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+    
+        .btn-primary {
+            background-color: #1a73e8;
+            border-color: #1a73e8;
+        }
+    
+        .btn-primary:hover {
+            background-color: #1558b0;
+        }
+
+        .toggle-icon {
+            transition: transform 0.3s ease;
+            transform-origin: center;
+        }
+
+        .collapsed .toggle-icon {
+            transform: rotate(-90deg);
+        }
+
+        .show ~ .toggle-icon,
+        [aria-expanded="true"] .toggle-icon {
+            transform: rotate(0deg);
+        }
+      </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4>Admin Panel</h4>
+        <nav class="nav flex-column">
+    
+            <a href="{% url 'admin_dashboard' %}" class="nav-link">Dashboard</a>
+    
+            <!-- Students Dropdown -->
+            <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#studentsMenu" role="button" aria-expanded="false" aria-controls="studentsMenu">
+                Students
+                <i class="bi bi-chevron-down toggle-icon"></i>
+            </a>
+            <div class="collapse submenu" id="studentsMenu">
+                <a href="{% url 'number_of_students' %}" class="nav-link">Number of Students</a>
+                <a href="{% url 'add_student' %}" class="nav-link">Add Student</a>
+                <a href="#" class="nav-link">Register Student Subjects</a>
+            </div>
+    
+            <!-- Teachers Dropdown -->
+            <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#teachersMenu" role="button" aria-expanded="false" aria-controls="teachersMenu">
+                Teachers
+                <i class="bi bi-chevron-down toggle-icon"></i>
+            </a>
+            <div class="collapse submenu" id="teachersMenu">
+                <a href="{% url 'number_of_teachers' %}" class="nav-link">Teachers List</a>
+                <a href="{% url 'add_teacher' %}" class="nav-link">Add Teacher</a>
+            </div>
+    
+            <!-- Subjects Dropdown -->
+            <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#subjectsMenu" role="button" aria-expanded="false" aria-controls="subjectsMenu">
+                Subjects
+                <i class="bi bi-chevron-down toggle-icon"></i>
+            </a>
+            <div class="collapse submenu" id="subjectsMenu">
+                <a href="#" class="nav-link">Add Subject</a>
+                <a href="#" class="nav-link">Subject List</a>
+                <a href="#" class="nav-link">Assign Subject to Teacher</a>
+                <a href="#" class="nav-link">Subjects and Assigned Teachers</a>
+            </div>
+    
+            <!-- Classes Dropdown -->
+            <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#classesMenu" role="button" aria-expanded="false" aria-controls="classesMenu">
+                Classes
+                <i class="bi bi-chevron-down toggle-icon"></i>
+            </a>
+            <div class="collapse submenu" id="classesMenu">
+                <a href="{% url 'streams' %}" class="nav-link">Number of Streams</a>
+                <a href="#" class="nav-link">Students per Stream</a>
+                <a href="#" class="nav-link">Stream Performance</a>
+            </div>
+    
+            <!-- Exams Dropdown -->
+            <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#examsMenu" role="button" aria-expanded="false" aria-controls="examsMenu">
+                Exams
+                <i class="bi bi-chevron-down toggle-icon"></i>
+            </a>
+            <div class="collapse submenu" id="examsMenu">
+                <a href="#" class="nav-link">Exam Registration</a>
+                <a href="#" class="nav-link">View Past Results</a>
+            </div>
+    
+            <!-- Marks Dropdown -->
+            <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#marksMenu" role="button" aria-expanded="false" aria-controls="marksMenu">
+                Enter Marks
+                <i class="bi bi-chevron-down toggle-icon"></i>
+            </a>
+            <div class="collapse submenu" id="marksMenu">
+                <a href="#" class="nav-link">Select Stream</a>
+                <a href="#" class="nav-link">Select Exam</a>
+                <a href="#" class="nav-link">Set Max Marks</a>
+            </div>
+    
+        </nav>
+    </div>
+</body>
+{% endblock %}

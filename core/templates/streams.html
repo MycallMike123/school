@@ -1,0 +1,110 @@
+{% include 'side_menu.html' %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Students per Stream</title>
+
+    <style>
+        .stream-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Three boxes per row */
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stream-box {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stream-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .stream-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .stream-count {
+            font-size: 1.2em;
+            color: #1d3557;
+            margin-top: 10px;
+        }
+
+        .stream-box a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .stream-box.active {
+            background-color: #d1e7fd;
+        }
+    </style>
+</head>
+
+<div class="main-content">
+    <div class="top-bar">
+        <h3>Students per Stream</h3>
+    </div>
+
+    <!-- Students per Stream -->
+    <div class="card">
+        <div class="card-header">
+            <h5>Students Registered by Stream</h5>
+        </div>
+        <div class="card-body">
+            <div class="stream-container">
+                <!-- Example Stream Boxes -->
+                <div class="stream-box">
+                    <a href="#">
+                        <div class="stream-title">1A</div>
+                        <div class="stream-count">150 Students</div>
+                    </a>
+                </div>
+
+                <div class="stream-box">
+                    <a href="#">
+                        <div class="stream-title">1B</div>
+                        <div class="stream-count">120 Students</div>
+                    </a>
+                </div>
+
+                <div class="stream-box">
+                    <a href="#">
+                        <div class="stream-title">2A</div>
+                        <div class="stream-count">90 Students</div>
+                    </a>
+                </div>
+
+                <div class="stream-box">
+                    <a href="#">
+                        <div class="stream-title">2B</div>
+                        <div class="stream-count">110 Students</div>
+                    </a>
+                </div>
+
+                <div class="stream-box">
+                    <a href="#">
+                        <div class="stream-title">3A</div>
+                        <div class="stream-count">80 Students</div>
+                    </a>
+                </div>
+
+                <div class="stream-box">
+                    <a href="#">
+                        <div class="stream-title">3B</div>
+                        <div class="stream-count">50 Students</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

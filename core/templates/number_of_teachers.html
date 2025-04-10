@@ -1,0 +1,165 @@
+{% include 'side_menu.html' %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Number of Teachers</title>
+
+    <style>
+        .card {
+            margin-bottom: 20px;
+        }
+
+        .card-header {
+            background-color: #1d3557;
+            color: white;
+            font-size: 18px;
+        }
+
+        .card-body {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-footer {
+            background-color: #f4f6f9;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #dee2e6;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f1f1f1;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .btn-container .btn {
+            width: 48%;
+        }
+
+        .total-students-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .total-students-container h2 {
+            margin-right: 20px;
+        }
+
+        /* Custom Button Styling */
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #5a6268;
+        }
+    </style>
+</head>
+
+
+<div class="main-content">
+    <div class="top-bar">
+        <h3>Number of Teachers</h3>
+    </div>
+
+    <!-- Card for total number of teachers -->
+    <div class="card">
+        <div class="card-header">
+            <h5>Total Students</h5>
+        </div>
+        <div class="card-body">
+            <!-- Flexbox container for total number and buttons -->
+            <div class="total-students-container">
+                <div>
+                    <h2>15</h2> <!-- Placeholder for the total number of teachers -->
+                    <p>Students currently registered in the system</p>
+                </div>
+
+                <!-- Buttons for Add Student and Register Teachers Subjects -->
+                <div class="btn-container">
+                    <a href="#" class="btn btn-primary">Add Teacher</a>
+                    <a href="#" class="btn btn-secondary">Remove Teacher</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table for detailed teacher information -->
+    <div class="card">
+        <div class="card-header">
+            <h5>Teachers List</h5>
+        </div>
+        <div class="card-body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Teacher Name</th>
+                        <th>Subject Combination</th>
+                        <th>Registration Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Placeholder Data: -->
+                    <tr>
+                        <td>1</td>
+                        <td>John Doe</td>
+                        <td>Maths/Physics</td>
+                        <td>2024-01-15</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Jane Smith</td>
+                        <td>English Literature</td>
+                        <td>2024-02-20</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Mark Johnson</td>
+                        <td>Hist/Geo</td>
+                        <td>2024-03-10</td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

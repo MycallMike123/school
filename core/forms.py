@@ -17,9 +17,20 @@ class RegisterUserForm(forms.ModelForm):
 class StudentRegistrationForm(forms.ModelForm):
     class Meta:
         model = Student
-        fields = ['admission_no', 'full_name', 'stream', 'kcpe_marks',
-                  'kcpe_year', 'parent_name', 'parent_contact',
-                  'date_of_birth', 'home_county', 'primary_school']
+        fields = [
+            'full_name',
+            'stream',
+            'kcpe_marks',
+            'kcpe_year',
+            'parent_name',
+            'parent_contact',
+            'date_of_birth',
+            'home_county',
+            'primary_school',
+        ]
+        widgets = {
+            'date_of_birth': forms.DateInput(attrs={'type': 'date'}),
+        }
 
 
     def clean_kcpe_marks(self):

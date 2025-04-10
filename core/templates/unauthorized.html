@@ -2,8 +2,17 @@
 
 {% block content %}
   <div class="container mt-5 text-center">
-    <h2>🚫 Unauthorized Access</h2>
-    <p>You do not have permission to view this page.</p>
-    <a href="{% url 'login' %}" class="btn btn-primary mt-3">Return to Login</a>
+    <div class="card" style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+      <div class="card-body">
+        <h2 class="text-danger">🚫 Unauthorized Access</h2>
+        <p>You do not have permission to view this page</p>
+        <p>Please login as an Admin to have access</p>
+
+        <div class="btn-container mt-3" style="display: flex; justify-content: space-between; gap: 10px;">
+          <a href="{% url 'login' %}" class="btn btn-primary" style="width: 48%; padding: 12px; text-align: center; border-radius: 5px; font-size: 16px; background-color: #0a2540; color: white; border-color: #007bff;">Return to Login</a>
+          <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary" style="width: 48%; padding: 12px; text-align: center; border-radius: 5px; font-size: 16px; background-color: #6c757d; color: white; border-color: #6c757d;">Go to Dashboard</a>
+        </div>
+      </div>
+    </div>
   </div>
 {% endblock %}

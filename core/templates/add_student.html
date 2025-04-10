@@ -1,0 +1,252 @@
+{% include 'side_menu.html' %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Student</title>
+    <style>
+        /* General form styling */
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-header h2 {
+            color: #1d3557;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center; /* Vertically center the label and input */
+            margin-bottom: 15px;
+        }
+
+        /* Label styling */
+        .form-label {
+            width: 30%; /* 30% width for the label */
+            font-weight: bold;
+            color: #333;
+            margin-right: 20px; /* Add spacing between label and input */
+            text-align: right; /* Align the label to the right */
+        }
+
+        /* Input styling */
+        input, select, textarea {
+            width: 60%; /* 60% width for the input field */
+            padding: 1px;
+            margin: 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Error message styling */
+        .errors {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+            padding-left: 30%; /* Align error message with the input field */
+        }
+
+        /* Buttons container styling */
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .btn-container .btn {
+            width: 48%;
+            padding: 12px;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #5a6268;
+        }
+    </style>
+</head>
+
+<div class="main-content">
+    <div class="top-bar">
+        <h3>Add Student</h3>
+    </div>
+
+    <!-- Card for Add Student Form -->
+    <div class="card">
+        <div class="card-header">
+            <h5>Add New Student</h5>
+        </div>
+        <div class="card-body">
+            <!-- Display Success or Error Messages -->
+            {% if messages %}
+                <div class="alert alert-success">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <!-- Form for adding a new student -->
+            <div class="form-container">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-header">
+                        <h2>Student Details</h2>
+                    </div>
+
+                    <!-- Student Name -->
+                    <div class="form-group">
+                        <label for="{{ form.full_name.id_for_label }}" class="form-label">Student Name</label>
+                        {{ form.full_name }}
+                        {% if form.full_name.errors %}
+                            <ul class="errors">
+                                {% for error in form.full_name.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+
+                    <!-- Stream -->
+                    <div class="form-group">
+                        <label for="{{ form.stream.id_for_label }}" class="form-label">Stream</label>
+                        {{ form.stream }}
+                        {% if form.stream.errors %}
+                            <ul class="errors">
+                                {% for error in form.stream.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+
+                    <!-- KCPE Marks -->
+                    <div class="form-group">
+                        <label for="{{ form.kcpe_marks.id_for_label }}" class="form-label">KCPE Marks</label>
+                        {{ form.kcpe_marks }}
+                        {% if form.kcpe_marks.errors %}
+                            <ul class="errors">
+                                {% for error in form.kcpe_marks.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+
+                    <!-- KCPE Year -->
+                    <div class="form-group">
+                        <label for="{{ form.kcpe_year.id_for_label }}" class="form-label">KCPE Year</label>
+                        {{ form.kcpe_year }}
+                        {% if form.kcpe_year.errors %}
+                            <ul class="errors">
+                                {% for error in form.kcpe_year.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+
+                    <!-- Parent Name -->
+                    <div class="form-group">
+                        <label for="{{ form.parent_name.id_for_label }}" class="form-label">Parent's Name</label>
+                        {{ form.parent_name }}
+                        {% if form.parent_name.errors %}
+                            <ul class="errors">
+                                {% for error in form.parent_name.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+
+                    <!-- Parent Contact -->
+                    <div class="form-group">
+                        <label for="{{ form.parent_contact.id_for_label }}" class="form-label">Parent's Contact</label>
+                        {{ form.parent_contact }}
+                        {% if form.parent_contact.errors %}
+                            <ul class="errors">
+                                {% for error in form.parent_contact.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+
+                    <!-- Date of Birth -->
+                    <div class="form-group">
+                        <label for="{{ form.date_of_birth.id_for_label }}" class="form-label">Date of Birth</label>
+                        {{ form.date_of_birth }}
+                        {% if form.date_of_birth.errors %}
+                            <ul class="errors">
+                                {% for error in form.date_of_birth.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+
+                    <!-- Home County -->
+                    <div class="form-group">
+                        <label for="{{ form.home_county.id_for_label }}" class="form-label">Home County</label>
+                        {{ form.home_county }}
+                        {% if form.home_county.errors %}
+                            <ul class="errors">
+                                {% for error in form.home_county.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+
+                    <!-- Primary School -->
+                    <div class="form-group">
+                        <label for="{{ form.primary_school.id_for_label }}" class="form-label">Primary School</label>
+                        {{ form.primary_school }}
+                        {% if form.primary_school.errors %}
+                            <ul class="errors">
+                                {% for error in form.primary_school.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="btn-container">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
