@@ -11,8 +11,7 @@ class UserProfile(models.Model):
     ROLE_CHOICES = [
         ('ADMIN', 'Admin'),
         ('TEACHER', 'Teacher'),
-        ('PARENT', 'Parent')
-    ]
+        ]
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     role = models.CharField(max_length=10, choices=ROLE_CHOICES) # Role field
