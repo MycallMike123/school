@@ -108,3 +108,4 @@ class ExamResult(models.Model):
 
     def __str__(self):
         return f"{self.student.full_name} - {self.subject.subject_name}: {self.percentage}%"
+        
